@@ -150,6 +150,9 @@
   <data name="LabelPort" xml:space="preserve">
     <value>Port:</value>
   </data>
+  <data name="LabelSDK" xml:space="preserve">
+    <value>SDK:</value>
+  </data>
   <data name="LabelSelectMapset" xml:space="preserve">
     <value>Výběr mapových podkladů:</value>
   </data>

@@ -34,11 +34,28 @@ namespace MapyCZforTS_CS
             App.Mapsets.ForEach(x => mapsetInput.Items.Add(x));
             mapsetInput.SelectedIndex = Settings.Default.Mapset;
             portInput.Value = Settings.Default.Port;
+            sdkInput.Clear();
+            sdkInput.AppendText(Settings.Default.SDK);
+            Utils.Log($"ZZZZZZZ: {sdkInput.Text}");
+            //sdkInput.SetValue("sd");
             cachingCheckbox.IsChecked = Settings.Default.Cache;
             loggingCheckbox.IsChecked = Settings.Default.AdvancedLogging;
+            
             Utils.Log($"Loading settings:{Environment.NewLine}\tMapset: {App.Mapsets[Settings.Default.Mapset]}{Environment.NewLine}\tPort: {Settings.Default.Port}{Environment.NewLine}\tUse cache: {Settings.Default.Cache}{Environment.NewLine}\tAdvanced log: {Settings.Default.AdvancedLogging}", Utils.LOG_LEVEL.VERBOSE);
 
             init = true;
+        }
+
+        private void SDK_ValueChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!init)
+                return;
+
+            Settings.Default.SDK = sdkInput.Text;
+            Settings.Default.Save();
+            Utils.Log($"UI -> Changed SDK to {sdkInput.Text}");
+
+            Utils.CleanIECache();
         }
 
         private void mapsetInput_SelectionChanged(object sender, SelectionChangedEventArgs e)

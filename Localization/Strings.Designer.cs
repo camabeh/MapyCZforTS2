@@ -158,6 +158,15 @@ namespace MapyCZforTS_CS.Localization {
                 return ResourceManager.GetString("LabelPort", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný SDK:.
+        /// </summary>
+        public static string LabelSDK {
+            get {
+                return ResourceManager.GetString("LabelSDK", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Vyhledá lokalizovaný řetězec podobný Mapsets selection:.
@@ -258,6 +267,24 @@ namespace MapyCZforTS_CS.Localization {
             }
         }
         
+        /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Aerial.
+        /// </summary>
+        public static string MapTypeBing {
+            get {
+                return ResourceManager.GetString("MapTypeBing", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Aerial.
+        /// </summary>
+        public static string MapTypeMapyCZ {
+            get {
+                return ResourceManager.GetString("MapTypeMapyCZ", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Vyhledá lokalizovaný řetězec podobný Tourist.
         /// </summary>

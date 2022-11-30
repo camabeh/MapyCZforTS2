@@ -7,6 +7,9 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Threading;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace MapyCZforTS_CS
 {
@@ -290,7 +293,25 @@ namespace MapyCZforTS_CS
         private async Task DownloadImage(string fname, string fpath, int x, int y)
         {
             string requestUrl = $"https://mapserver.mapy.cz/{Mapset.Value}/{fname}";
+            
+            if (Mapset.Value == "mapycz") {
+                string sdk = Settings.Default.SDK;
+                requestUrl = $"https://mapserver.mapy.cz/bing/{fname}?sdk={sdk}";
+                App.DownloadClient.DefaultRequestHeaders.Referrer = new Uri("https://en.mapy.cz");
+            } else if (Mapset.Value == "bing") {
+                string[] values = fname.Split('-');
+                int zz = Int32.Parse(values[0]);
+                int xx = Int32.Parse(values[1]);
+                int yy = Int32.Parse(values[2]);
+
+                string bingTile = $"{convert(zz, xx, yy)}";
+                requestUrl = $"https://t.ssl.ak.dynamic.tiles.virtualearth.net/comp/ch/{bingTile}?&it=A,G,RL";
+            }
+
+            /// string sdk = sdkInput.Text
+
             HttpResponseMessage response = await App.DownloadClient.GetAsync(requestUrl);
+            Utils.Log($"URL FOR TILE: {requestUrl}", Utils.LOG_LEVEL.INFO);
 
             if (response.StatusCode != System.Net.HttpStatusCode.OK)
                 Utils.Log($"FETCH -> Failed to download image {requestUrl}", Utils.LOG_LEVEL.VERBOSE);
@@ -356,5 +377,38 @@ namespace MapyCZforTS_CS
                 });
             });
         }
+    
+       static string convert(int z, int x, int y) {
+        string tileXbits = Convert.ToString(x, 2).PadLeft(z, '0');
+        string tileYbits = Convert.ToString(y, 2).PadLeft(z, '0');
+        //Console.Write(tileXbits + "\n");
+        //Console.Write(tileYbits + "\n");
+        
+        List<string> zipped = new List<string>();
+        for (int i=0; i<tileXbits.Length; i++)
+		{
+			zipped.Add(tileYbits[i].ToString());
+			zipped.Add(tileXbits[i].ToString());
+		}
+		
+		// for (int i=0; i<zipped.Count; i++)
+		// {
+		//     Console.Write(zipped[i] + ",");
+		// }
+        // Console.Write("\n");
+        
+        List<string> zip = new List<string>();
+        for (int i=0; i<zipped.Count; )
+		{
+		    string pair = String.Join("", zipped.GetRange(i, 2));
+		    zip.Add(Convert.ToInt32(pair, 2).ToString());
+			
+			i = i + 2;
+		}
+		
+		string result =String.Join("", zip.ToArray());
+		// Console.Write(result + "\n");
+        return result;
+    }
     }
 }

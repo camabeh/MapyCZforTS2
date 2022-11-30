@@ -150,6 +150,9 @@
   <data name="LabelPort" xml:space="preserve">
     <value>Port:</value>
   </data>
+  <data name="LabelSDK" xml:space="preserve">
+    <value>SDK:</value>
+  </data>
   <data name="LabelSelectMapset" xml:space="preserve">
     <value>Mapsets selection:</value>
   </data>
@@ -182,6 +185,12 @@
   </data>
   <data name="MapTypeRelief" xml:space="preserve">
     <value>Relief</value>
+  </data>
+  <data name="MapTypeBing" xml:space="preserve">
+    <value>Bing</value>
+  </data>
+  <data name="MapTypeMapyCZ" xml:space="preserve">
+    <value>MapyCZ</value>
   </data>
   <data name="MapTypeTourist" xml:space="preserve">
     <value>Tourist</value>

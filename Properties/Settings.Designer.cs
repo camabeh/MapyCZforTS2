@@ -25,7 +25,7 @@ namespace MapyCZforTS_CS.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("5001")]
+        [global::System.Configuration.DefaultSettingValueAttribute("5002")]
         public int Port {
             get {
                 return ((int)(this["Port"]));
@@ -35,6 +35,17 @@ namespace MapyCZforTS_CS.Properties {
             }
         }
         
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public string SDK {
+            get {
+                return ((string)(this["SDK"]));
+            }
+            set {
+                this["SDK"] = value;
+            }
+        }
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]

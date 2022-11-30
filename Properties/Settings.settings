@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="Port" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">5001</Value>
+      <Value Profile="(Default)">5002</Value>
     </Setting>
     <Setting Name="Cache" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>

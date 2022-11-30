@@ -38,6 +38,8 @@ namespace MapyCZforTS_CS
             Mapsets.Add(new(Localization.Strings.MapTypeWinter, "winter-m-down", 19));
             Mapsets.Add(new(Localization.Strings.MapTypeHist, "army2-m", 15));
             Mapsets.Add(new(Localization.Strings.MapTypeRelief, "relief-m", 15));
+            Mapsets.Add(new(Localization.Strings.MapTypeBing, "bing", 19));
+            Mapsets.Add(new(Localization.Strings.MapTypeMapyCZ, "mapycz", 19));
 
             if (Settings.Default.UpgradeRequired)
             {
